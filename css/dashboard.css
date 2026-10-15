@@ -1484,6 +1484,42 @@ body.ds-body {
   }
 }
 
+/* Phone-sized list rows: allow each row to wrap so the date, avatar and
+   status chips never crush the service/caregiver text or leave the card. */
+@media (max-width: 30rem) {
+  .ds-list__item {
+    flex-wrap: wrap;
+    row-gap: 0.6rem;
+  }
+
+  .ds-list__body {
+    flex: 1 1 9.5rem;
+  }
+
+  .ds-list__body strong,
+  .ds-list__body span {
+    overflow-wrap: anywhere;
+  }
+
+  .ds-status {
+    margin-left: auto;
+    padding: 0.24rem 0.5rem;
+    font-size: 0.66rem;
+  }
+}
+
+/* Phone-sized topbar: the crumb duplicates the page title and crowds the
+   icons, so phones get a single-line header with a fluid title size. */
+@media (max-width: 30rem) {
+  .ds-topbar__crumb {
+    display: none;
+  }
+
+  .ds-topbar__title {
+    font-size: clamp(1.05rem, 5.2vw, 1.25rem);
+  }
+}
+
 /* Caregiver dashboard additions (reuses the shared shell) ----------------- */
 .ds-gauge {
   width: min(100%, 12rem);

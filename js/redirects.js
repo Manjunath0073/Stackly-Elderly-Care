@@ -16,7 +16,8 @@
     "[data-allow-navigation]",
     "[data-slider-prev]",
     "[data-slider-next]",
-    "[data-newsletter-form]"
+    "[data-newsletter-form]",
+    "[data-contact-form]"
   ].join(", ");
 
   function isExempt(element) {

@@ -348,8 +348,14 @@
     if (!tbody) {
       return;
     }
+    var heads = $$("thead th", table).map(function (th) {
+      return (th.textContent || "").trim();
+    });
     tbody.innerHTML = rows.map(function (row) {
-      return "<tr>" + row.map(function (cell) { return "<td>" + esc(cell) + "</td>"; }).join("") + "</tr>";
+      return "<tr>" + row.map(function (cell, index) {
+        var label = heads[index] ? " data-label=\"" + esc(heads[index]) + "\"" : "";
+        return "<td" + label + ">" + esc(cell) + "</td>";
+      }).join("") + "</tr>";
     }).join("");
   }
 

@@ -127,6 +127,7 @@
     var submitButton = form.querySelector("[data-submit-button]");
     var summary = form.querySelector("[data-form-summary]");
     var status = form.querySelector("[data-form-status]");
+    var statusTimer;
     var messageField = form.querySelector("#ct-message");
     var counter = form.querySelector("[data-message-counter]");
     var fields = Array.prototype.slice.call(form.querySelectorAll("[data-field]"));
@@ -329,6 +330,7 @@
       }
 
       if (status) {
+        window.clearTimeout(statusTimer);
         status.classList.remove("is-success");
         status.textContent = "Sending your message...";
       }
@@ -348,6 +350,10 @@
         if (status) {
           status.classList.add("is-success");
           status.textContent = "Thank you, we'll get back to you within 24 hours.";
+          statusTimer = window.setTimeout(function () {
+            status.textContent = "";
+            status.classList.remove("is-success");
+          }, 3000);
         }
       }, 900);
     });
