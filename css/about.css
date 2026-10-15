@@ -1,0 +1,917 @@
+@import url("style.css");
+
+/* ==========================================================================
+   About page — page-specific layout only.
+   All colour, spacing, radius, shadow and typography tokens are inherited
+   from the shared homepage stylesheet (css/style.css) via the @import above.
+   ========================================================================== */
+
+/* Shared page helpers ----------------------------------------------------- */
+.abt-lead {
+  max-width: 42rem;
+  margin-top: 1.25rem;
+  color: var(--color-slate);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.abt-lead--light {
+  color: rgba(255, 253, 249, 0.78);
+}
+
+/* 1. About hero ----------------------------------------------------------- */
+.abt-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(1.75rem, 4vw, 2.75rem) clamp(4rem, 9vw, 7rem);
+  background: linear-gradient(180deg, var(--color-white), var(--color-cream));
+}
+
+.abt-hero__glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.abt-hero__glow--one {
+  top: -10rem;
+  right: -10rem;
+  width: 26rem;
+  height: 26rem;
+  background: rgba(168, 198, 183, 0.28);
+}
+
+.abt-hero__glow--two {
+  bottom: -12rem;
+  left: -12rem;
+  width: 28rem;
+  height: 28rem;
+  background: rgba(241, 233, 220, 0.85);
+}
+
+.abt-breadcrumb {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.abt-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-slate);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.abt-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.abt-breadcrumb li + li::before {
+  color: var(--color-sage);
+  content: "/";
+  font-weight: 700;
+}
+
+.abt-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-teal);
+  transition: color 180ms var(--ease);
+}
+
+.abt-breadcrumb a:hover,
+.abt-breadcrumb a:focus-visible {
+  color: var(--color-teal-dark);
+  text-decoration: underline;
+}
+
+.abt-breadcrumb [aria-current="page"] {
+  color: var(--color-ink-deep);
+}
+
+.abt-hero__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 5.5rem);
+}
+
+.abt-hero__title {
+  max-width: 14ch;
+  margin-top: 1rem;
+  font-size: clamp(2.5rem, 6.2vw, 4.375rem);
+}
+
+.abt-hero__title em {
+  color: var(--color-teal);
+  font-style: italic;
+}
+
+.abt-hero__copy .button-group {
+  margin-top: 2rem;
+}
+
+.abt-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.35rem;
+  margin-top: 2rem;
+  color: var(--color-slate);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.abt-trust-row li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.abt-hero__media {
+  position: relative;
+  width: min(100%, 32rem);
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.abt-hero__frame {
+  padding: 0.7rem;
+  border-radius: 3rem 3rem 3rem 0.75rem;
+  background: var(--color-sand);
+}
+
+.abt-hero__photo {
+  width: 100%;
+  aspect-ratio: 13 / 16;
+  border-radius: 2.4rem 2.4rem 2.4rem 0.5rem;
+  object-fit: cover;
+}
+
+.abt-hero__badge {
+  position: absolute;
+  left: 0.25rem;
+  bottom: 1.6rem;
+  display: grid;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem var(--radius-md) var(--radius-md) var(--radius-md);
+  background: var(--color-teal);
+  color: var(--color-white);
+  box-shadow: var(--shadow-card);
+  transform: rotate(-3deg);
+}
+
+.abt-hero__badge strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.abt-hero__badge span {
+  color: var(--color-sage);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.abt-hero__chip {
+  position: absolute;
+  top: 1.6rem;
+  right: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: calc(100% - 0.8rem);
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(216, 226, 220, 0.85);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.abt-hero__chip-icon {
+  display: grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+}
+
+.abt-hero__chip-icon svg {
+  width: 1.15rem;
+}
+
+.abt-hero__chip strong {
+  display: block;
+  color: var(--color-ink-deep);
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.abt-hero__chip small {
+  color: var(--color-slate);
+  font-size: 0.68rem;
+}
+
+/* 2. Our story ------------------------------------------------------------ */
+.abt-story {
+  background: var(--color-white);
+}
+
+.abt-story__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(3rem, 8vw, 6rem);
+}
+
+.abt-story__media {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.abt-story__frame {
+  padding: 0.65rem;
+  border-radius: 3rem 3rem 3rem 0.75rem;
+  background: var(--color-teal-mist);
+}
+
+.abt-story__frame img {
+  width: 100%;
+  aspect-ratio: 13 / 15;
+  border-radius: 2.4rem 2.4rem 2.4rem 0.5rem;
+  object-fit: cover;
+}
+
+.abt-story__quote {
+  position: absolute;
+  right: 0.6rem;
+  bottom: -1.6rem;
+  max-width: 17rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-md) 0.4rem var(--radius-md) var(--radius-md);
+  background: var(--color-teal-dark);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-white);
+}
+
+.abt-story__quote p {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.abt-story__content h2 {
+  max-width: 15ch;
+  margin-top: 1rem;
+}
+
+.abt-story__content > p {
+  margin-top: 1rem;
+  color: var(--color-slate);
+  line-height: 1.7;
+}
+
+.abt-signature {
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.abt-signature__name {
+  color: var(--color-ink-deep);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.abt-signature__role {
+  color: var(--color-slate);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* 3. Mission, vision & values --------------------------------------------- */
+.abt-mvv {
+  background: var(--color-sand);
+}
+
+.abt-mvv__head {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.abt-mvv__head .eyebrow {
+  justify-content: center;
+}
+
+.abt-mvv__head h2 {
+  margin-top: 1rem;
+}
+
+.abt-mvv__head .abt-lead {
+  margin-inline: auto;
+}
+
+.abt-pillars {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.abt-pillar {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.abt-pillar--accent {
+  border-color: var(--color-teal-dark);
+  background: var(--color-teal-dark);
+  color: var(--color-white);
+}
+
+.abt-pillar__icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+  place-items: center;
+  border-radius: 1rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+}
+
+.abt-pillar__icon svg {
+  width: 1.5rem;
+}
+
+.abt-pillar--accent .abt-pillar__icon {
+  background: rgba(168, 198, 183, 0.18);
+  color: var(--color-sage);
+}
+
+.abt-pillar__label {
+  color: var(--color-teal);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.abt-pillar--accent .abt-pillar__label {
+  color: var(--color-sage);
+}
+
+.abt-pillar h3 {
+  margin-top: 0.5rem;
+  color: var(--color-ink-deep);
+  font-size: 1.4rem;
+}
+
+.abt-pillar--accent h3 {
+  color: var(--color-white);
+}
+
+.abt-pillar p {
+  margin-top: 0.6rem;
+  color: var(--color-slate);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.abt-pillar--accent p {
+  color: rgba(255, 253, 249, 0.75);
+}
+
+.abt-values {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.abt-values__title {
+  color: var(--color-ink-deep);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  text-align: center;
+}
+
+.abt-values__list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+.abt-value {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+
+.abt-value__icon {
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 0.4rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+  font-size: 0.95rem;
+}
+
+.abt-value strong {
+  color: var(--color-ink-deep);
+  font-size: 0.98rem;
+}
+
+.abt-value > span:last-child {
+  color: var(--color-slate);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* 4. Meet the team -------------------------------------------------------- */
+.abt-team {
+  background: var(--color-white);
+}
+
+.abt-team__head {
+  max-width: 46rem;
+}
+
+.abt-team__head h2 {
+  margin-top: 1rem;
+}
+
+.abt-team__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.abt-member {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+  box-shadow: 0 10px 30px rgba(20, 57, 55, 0.05);
+}
+
+.abt-member__photo {
+  background: var(--color-sage);
+}
+
+.abt-member__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.abt-member__body {
+  padding: 1.25rem;
+}
+
+.abt-member h3 {
+  color: var(--color-ink-deep);
+  font-size: 1.4rem;
+}
+
+.abt-member__role {
+  margin-top: 0.3rem;
+  color: var(--color-teal);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.abt-member__body > p:last-child {
+  margin-top: 0.65rem;
+  color: var(--color-slate);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.abt-join {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.abt-join h3 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+}
+
+.abt-join p {
+  max-width: 46rem;
+  margin-top: 0.5rem;
+  color: rgba(255, 253, 249, 0.8);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.abt-join .button {
+  justify-self: start;
+  background: var(--color-cream);
+  box-shadow: none;
+  color: var(--color-teal-dark);
+}
+
+.abt-join .button:hover,
+.abt-join .button:focus-visible {
+  background: var(--color-white);
+  color: var(--color-teal-dark);
+}
+
+/* 5. Our impact in numbers ------------------------------------------------ */
+.abt-impact {
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.abt-impact h2 {
+  color: var(--color-white);
+}
+
+.abt-impact__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.abt-impact__media {
+  position: relative;
+  width: min(100%, 32rem);
+  margin-inline: auto;
+}
+
+.abt-impact__media img {
+  width: 100%;
+  aspect-ratio: 13 / 15;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0.75rem;
+  object-fit: cover;
+}
+
+.abt-impact__caption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: rgba(255, 253, 249, 0.75);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.abt-impact__content h2 {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.abt-counters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem 1rem;
+  margin-top: 2.5rem;
+}
+
+.abt-counter {
+  min-width: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-line-dark);
+}
+
+.abt-counter__value {
+  display: block;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.abt-counter__label {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(255, 253, 249, 0.72);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* 6. Why families trust Stackly ------------------------------------------- */
+.abt-trust {
+  background: var(--color-white);
+}
+
+.abt-trust__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 6rem);
+}
+
+.abt-trust__content h2 {
+  max-width: 15ch;
+  margin-top: 1rem;
+}
+
+.abt-creds {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.abt-cred {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.abt-cred__icon {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.9rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+}
+
+.abt-cred__icon svg {
+  width: 1.3rem;
+}
+
+.abt-cred h3 {
+  color: var(--color-ink-deep);
+  font-size: 1.02rem;
+}
+
+.abt-cred p {
+  margin-top: 0.2rem;
+  color: var(--color-slate);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.abt-trust__media {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.abt-trust__media img {
+  width: 100%;
+  aspect-ratio: 13 / 10.5;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.abt-trust__badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.abt-trust__badge strong {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.abt-trust__badge span {
+  color: var(--color-slate);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* 7. Life at Stackly ------------------------------------------------------ */
+.abt-life {
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.abt-life__head {
+  display: grid;
+  gap: 1.25rem 3rem;
+  align-items: end;
+}
+
+.abt-life__head h2 {
+  max-width: 14ch;
+  margin-top: 0.9rem;
+}
+
+.abt-life__head > p {
+  max-width: 32rem;
+  color: var(--color-slate);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.abt-life__rail-wrap {
+  --abt-rail-pad: max(1rem, calc((100vw - var(--container)) / 2));
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+  overflow-x: auto;
+  scroll-padding-inline: var(--abt-rail-pad);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.abt-life__rail {
+  display: flex;
+  gap: 1rem;
+  padding: 0.25rem var(--abt-rail-pad);
+}
+
+.abt-life__item {
+  position: relative;
+  flex: 0 0 clamp(14rem, 60vw, 22rem);
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  scroll-snap-align: start;
+}
+
+.abt-life__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+
+.abt-life__item:hover img {
+  transform: scale(1.04);
+}
+
+.abt-life__item p {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  display: grid;
+  gap: 0.05rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(90deg, rgba(16, 48, 47, 0.82), rgba(16, 48, 47, 0.35));
+  color: var(--color-white);
+}
+
+.abt-life__item p strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.abt-life__item p span {
+  color: rgba(255, 253, 249, 0.78);
+  font-size: 0.68rem;
+}
+
+/* 8. Testimonials and final CTA ------------------------------------------- */
+.abt-voices {
+  background: var(--color-sand);
+}
+
+.abt-voices .cta-band {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+/* Enlarge slider dot tap target to 44px while keeping the dot small */
+.slider-dot {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0;
+  background: transparent;
+}
+
+.slider-dot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #c7d4cd;
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: width 180ms var(--ease), background-color 180ms var(--ease);
+}
+
+.slider-dot.is-active {
+  width: 2.75rem;
+  border-radius: 0;
+  background: transparent;
+}
+
+.slider-dot.is-active::before {
+  width: 1.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal);
+}
+
+/* Responsive layout ------------------------------------------------------- */
+@media (min-width: 34rem) {
+  .abt-values__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .abt-team__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .abt-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .abt-hero__media {
+    margin-right: 0;
+  }
+
+  .abt-pillars {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .abt-life__head {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.6fr);
+  }
+
+  .abt-impact__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .abt-join {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .abt-join .button {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 60rem) {
+  .abt-story__grid {
+    grid-template-columns: minmax(20rem, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .abt-trust__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+  }
+
+  .abt-values__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .abt-team__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

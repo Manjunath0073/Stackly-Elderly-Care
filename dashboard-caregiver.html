@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your Stackly Elderly Care caregiver dashboard: schedule, clients, earnings, ratings, availability and messages in one calm place.">
+  <title>Caregiver Dashboard | Stackly Elderly Care</title>
+  <link rel="stylesheet" href="css/dashboard.css?v=5">
+  <script src="js/dashboard-caregiver.js" defer></script>
+  <script src="js/redirects.js" defer></script>
+</head>
+<body class="ds-body">
+  <a class="skip-link" href="#ds-content">Skip to content</a>
+
+  <div class="ds" data-ds>
+    <aside class="ds-sidebar" id="ds-sidebar" aria-label="Dashboard navigation">
+      <div class="ds-sidebar__head">
+        <a class="ds-brand" href="index.html" aria-label="Stackly Elderly Care home">
+          <img class="ds-brand__logo" src="images/logo/logo-stackly.webp" width="346" height="100" alt="Stackly Elderly Care">
+          <span class="ds-brand__monogram" aria-hidden="true">S</span>
+        </a>
+        <button class="ds-iconbtn ds-sidebar__collapse" type="button" data-ds-collapse aria-label="Collapse sidebar" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+
+      <form class="ds-search ds-search--side" role="search" data-ds-search-form>
+        <label class="sr-only" for="ds-search">Search clients, visits and messages</label>
+        <span class="ds-search__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></svg></span>
+        <input class="ds-search__input" id="ds-search" type="search" placeholder="Search clients, visits&#8230;" autocomplete="off" data-ds-search>
+      </form>
+      <p class="sr-only" data-ds-search-status role="status" aria-live="polite"></p>
+
+      <nav class="ds-nav" aria-label="Dashboard sections">
+        <ul class="ds-nav__list">
+          <li>
+            <a class="ds-nav__link is-active" href="#ds-overview" data-ds-nav data-title="Overview" aria-current="page">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg></span>
+              <span class="ds-nav__text">Overview</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-schedule" data-ds-nav data-title="My Schedule">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3"/></svg></span>
+              <span class="ds-nav__text">My Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-clients" data-ds-nav data-title="Clients">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5h-3A4.5 4.5 0 0 0 4 18.5V20"/><circle cx="10" cy="7" r="3"/><path d="M16 4.7a3 3 0 0 1 0 5.8M20 19.9v-1.4a4.4 4.4 0 0 0-3.1-4.2"/></svg></span>
+              <span class="ds-nav__text">Clients</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-availability" data-ds-nav data-title="Availability">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span>
+              <span class="ds-nav__text">Availability</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-messages" data-ds-nav data-title="Messages">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-10.9 6.7L4 20l1.3-5A7.5 7.5 0 1 1 20 12Z"/></svg></span>
+              <span class="ds-nav__text">Messages</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-earnings" data-ds-nav data-title="Earnings">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17.5 9 11l4 4 8-8.5"/><path d="M15 6.5h6v6"/></svg></span>
+              <span class="ds-nav__text">Earnings</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-profile" data-ds-nav data-title="My Profile">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span>
+              <span class="ds-nav__text">My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="ds-nav__link" href="#ds-settings" data-ds-nav data-title="Settings">
+              <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7"/></svg></span>
+              <span class="ds-nav__text">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <a class="button ds-nav__cta" href="#ds-availability" data-ds-view-link>Update availability</a>
+
+      <div class="ds-sidebar__foot">
+        <a class="ds-nav__link" href="index.html">
+          <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5V20h-5.5v-5h-5v5H4Z"/></svg></span>
+          <span class="ds-nav__text">Return to Home</span>
+        </a>
+        <button class="ds-nav__link ds-nav__link--logout" type="button" data-ds-logout>
+          <span class="ds-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5H6.5A1.5 1.5 0 0 0 5 6.5v11A1.5 1.5 0 0 0 6.5 19H15"/><path d="M15 12H20M17.5 9.5 20 12l-2.5 2.5"/></svg></span>
+          <span class="ds-nav__text">Log out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="ds-scrim" data-ds-scrim hidden></div>
+
+    <div class="ds-main">
+      <header class="ds-topbar">
+        <button class="ds-iconbtn ds-topbar__menu" type="button" data-ds-menu aria-expanded="false" aria-controls="ds-sidebar" aria-label="Open dashboard menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+
+        <div class="ds-topbar__heading">
+          <p class="ds-topbar__crumb">Dashboard <span aria-hidden="true">/</span> <span data-ds-crumb>Overview</span></p>
+          <h1 class="ds-topbar__title" data-ds-page-title>Overview</h1>
+        </div>
+
+        <div class="ds-topbar__tools">
+          <div class="ds-notif">
+            <button class="ds-iconbtn ds-notif__btn" type="button" data-ds-notif aria-expanded="false" aria-controls="ds-notif-panel" aria-label="Notifications, 2 unread">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 13 6 9Z"/><path d="M10 18a2 2 0 0 0 4 0"/></svg>
+              <span class="ds-notif__badge" aria-hidden="true">2</span>
+            </button>
+            <div class="ds-notif__panel" id="ds-notif-panel" data-ds-notif-panel hidden>
+              <p class="ds-notif__title">Notifications</p>
+              <ul class="ds-notif__list">
+                <li><span class="ds-dot ds-dot--teal" aria-hidden="true"></span> New visit request from Margaret's family.</li>
+                <li><span class="ds-dot ds-dot--gold" aria-hidden="true"></span> Your timesheet for September is ready.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ds-userchip">
+            <span class="ds-avatar ds-avatar--sm" data-ds-avatar aria-hidden="true">C</span>
+            <span class="ds-userchip__meta">
+              <strong data-ds-username>Caregiver</strong>
+              <span class="ds-role-badge" data-ds-role>Caregiver</span>
+            </span>
+          </div>
+
+          <a class="button button--small ds-topbar__cta" href="#ds-availability" data-ds-view-link>Update availability</a>
+        </div>
+      </header>
+
+      <main class="ds-content" id="ds-content">
+        <!-- Overview -->
+        <section class="ds-view" id="ds-overview" aria-labelledby="cg-welcome-title">
+          <div class="ds-card ds-welcome">
+            <div class="ds-welcome__main">
+              <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> Caregiver dashboard</p>
+              <h2 class="ds-welcome__title" id="cg-welcome-title" data-ds-greeting>Welcome back</h2>
+              <p class="ds-welcome__date" data-ds-dateline></p>
+              <p class="ds-welcome__summary" data-ds-summary>Loading your schedule&#8230;</p>
+              <ul class="ds-chips" data-ds-chips aria-label="Your profile details"></ul>
+            </div>
+            <div class="ds-welcome__actions">
+              <a class="button" href="#ds-availability" data-ds-view-link>Update availability</a>
+              <a class="button button--outline" href="#ds-schedule" data-ds-view-link>View schedule</a>
+            </div>
+          </div>
+
+          <div class="ds-section" aria-labelledby="cg-kpi-title">
+            <h2 class="sr-only" id="cg-kpi-title">Key metrics</h2>
+            <div class="ds-kpis" data-ds-kpis></div>
+          </div>
+
+          <div class="ds-section ds-grid ds-grid--split" aria-labelledby="cg-ratings-title">
+            <h2 class="sr-only" id="cg-ratings-title">Ratings and feedback</h2>
+
+            <article class="ds-card" aria-labelledby="cg-gauge-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-gauge-title">Average rating</h3>
+                  <p class="ds-card__sub">Across all completed visits</p>
+                </div>
+              </header>
+              <div class="ds-gauge" data-gauge></div>
+              <p class="ds-summary-text" data-gauge-summary></p>
+            </article>
+
+            <article class="ds-card" aria-labelledby="cg-reviews-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-reviews-title">Recent reviews</h3>
+                  <p class="ds-card__sub">What families are saying</p>
+                </div>
+              </header>
+              <ul class="ds-feed" data-reviews></ul>
+            </article>
+          </div>
+
+          <div class="ds-section ds-grid ds-grid--split" aria-labelledby="cg-tasks-title">
+            <h2 class="sr-only" id="cg-tasks-title">Tasks and notes</h2>
+
+            <article class="ds-card" aria-labelledby="cg-todo-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-todo-title">Tasks</h3>
+                  <p class="ds-card__sub" data-tasks-count>Pending items</p>
+                </div>
+              </header>
+              <ul class="cg-tasks" data-tasks></ul>
+            </article>
+
+            <article class="ds-card" aria-labelledby="cg-notes-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-notes-title">Visit notes</h3>
+                  <p class="ds-card__sub">Recently logged</p>
+                </div>
+              </header>
+              <div class="cg-notes" data-notes></div>
+            </article>
+          </div>
+
+          <div class="ds-section" aria-labelledby="cg-actions-title">
+            <h2 class="sr-only" id="cg-actions-title">Quick actions</h2>
+            <div class="ds-tiles" data-quick-actions></div>
+          </div>
+
+          <div class="ds-section ds-grid ds-grid--split">
+            <article class="ds-card" aria-labelledby="cg-requests-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-requests-title">Visit requests</h3><p class="ds-card__sub">Awaiting your reply</p></div>
+              </header>
+              <ul class="ds-list" data-visit-requests></ul>
+            </article>
+            <article class="ds-card" aria-labelledby="cg-badges-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-badges-title">Achievements</h3><p class="ds-card__sub">Milestones you have reached</p></div>
+              </header>
+              <div class="ds-badges" data-badges></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- My Schedule -->
+        <section class="ds-view" id="ds-schedule" hidden aria-labelledby="cg-schedule-title">
+          <div class="ds-section ds-grid ds-grid--charts">
+            <h2 class="sr-only" id="cg-schedule-title">Weekly schedule</h2>
+
+            <article class="ds-card ds-card--chart" aria-labelledby="cg-hours-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-hours-title">Weekly hours</h3>
+                  <p class="ds-card__sub">Care hours per day, this week</p>
+                </div>
+                <span class="ds-tag" data-cg-total-hours>0 h</span>
+              </header>
+              <div class="ds-chart" data-chart="weekly-hours"></div>
+              <div class="ds-table-wrap ds-table-wrap--sr">
+                <table class="ds-table" data-table="weekly-hours">
+                  <caption>Care hours per day this week</caption>
+                  <thead><tr><th scope="col">Day</th><th scope="col">Hours</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-card" aria-labelledby="cg-today-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-today-title">Today's visits</h3>
+                  <p class="ds-card__sub" data-cg-today-date>Today</p>
+                </div>
+              </header>
+              <ul class="ds-list" data-today-visits></ul>
+              <p class="ds-empty" data-today-empty hidden>No visits scheduled today.</p>
+            </article>
+          </div>
+
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-upcoming-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-upcoming-title">Upcoming visits</h3><p class="ds-card__sub">Next 7 days</p></div>
+              </header>
+              <div class="ds-table-wrap">
+                <table class="ds-table ds-table--stack" data-upcoming-visits>
+                  <caption class="sr-only">Upcoming visits</caption>
+                  <thead><tr><th scope="col">Date</th><th scope="col">Client</th><th scope="col">Service</th><th scope="col">Status</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Clients -->
+        <section class="ds-view" id="ds-clients" hidden aria-labelledby="cg-clients-title">
+          <div class="ds-section ds-grid ds-grid--charts">
+            <h2 class="sr-only" id="cg-clients-title">Clients</h2>
+
+            <article class="ds-card ds-card--chart" aria-labelledby="cg-mix-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-mix-title">Visit mix</h3>
+                  <p class="ds-card__sub">By care type, this month</p>
+                </div>
+              </header>
+              <div class="ds-chart ds-chart--donut" data-chart="visit-mix"></div>
+              <div class="ds-table-wrap ds-table-wrap--sr">
+                <table class="ds-table" data-table="visit-mix">
+                  <caption>Visits by care type this month</caption>
+                  <thead><tr><th scope="col">Care type</th><th scope="col">Visits</th><th scope="col">Share</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="ds-card" aria-labelledby="cg-mylist-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-mylist-title">My clients</h3>
+                  <p class="ds-card__sub">People you support</p>
+                </div>
+              </header>
+              <ul class="ds-list" data-clients></ul>
+              <p class="ds-empty" data-clients-empty hidden>No clients match your search.</p>
+            </article>
+          </div>
+
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-carenotes-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-carenotes-title">Care notes</h3><p class="ds-card__sub">Latest from your clients</p></div>
+              </header>
+              <ul class="ds-feed" data-care-notes></ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Availability -->
+        <section class="ds-view" id="ds-availability" hidden aria-labelledby="cg-avail-title">
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-avail-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-avail-title">Weekly availability</h3>
+                  <p class="ds-card__sub">Tap a slot to mark yourself available</p>
+                </div>
+                <span class="ds-tag" data-avail-count>0 / 14</span>
+              </header>
+
+              <div class="ds-progress" data-completeness>
+                <div class="ds-progress__head"><span class="ds-progress__label">Profile completeness</span><span class="ds-progress__value" data-completeness-value>0%</span></div>
+                <svg class="ds-progress__track" viewBox="0 0 100 8" preserveAspectRatio="none" role="img" aria-label="Profile completeness">
+                  <rect x="0" y="0" width="100" height="8" rx="4" fill="#d8e2dc"></rect>
+                  <rect class="ds-progress__fill" x="0" y="0" width="0" height="8" rx="4" fill="#1d716b" data-completeness-fill></rect>
+                </svg>
+              </div>
+
+              <div class="ds-table-wrap">
+                <div class="cg-avail" data-availability></div>
+              </div>
+              <p class="ds-status" data-avail-status role="status" aria-live="polite"></p>
+            </article>
+          </div>
+
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-availmeta-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-availmeta-title">Availability details</h3><p class="ds-card__sub">How you like to work</p></div>
+              </header>
+              <div class="ds-meta-grid">
+                <div class="ds-meta"><strong>15 mi</strong><span>Travel radius</span></div>
+                <div class="ds-meta"><strong>Weekdays</strong><span>Preferred days</span></div>
+                <div class="ds-meta"><strong>10 / 14</strong><span>Slots open</span></div>
+                <div class="ds-meta"><strong>90%</strong><span>Acceptance rate</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Messages -->
+        <section class="ds-view" id="ds-messages" hidden aria-labelledby="cg-messages-title">
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-messages-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-messages-title">Messages &amp; notifications</h3>
+                  <p class="ds-card__sub">Requests, updates and alerts</p>
+                </div>
+              </header>
+              <ul class="ds-feed" data-messages></ul>
+              <p class="ds-empty" data-messages-empty hidden>No messages match your search.</p>
+            </article>
+          </div>
+
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-conv-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-conv-title">Conversations</h3><p class="ds-card__sub">Families and care team</p></div>
+              </header>
+              <ul class="ds-list" data-conversations></ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Earnings -->
+        <section class="ds-view" id="ds-earnings" hidden aria-labelledby="cg-earnings-title">
+          <div class="ds-section">
+            <article class="ds-card ds-card--chart" aria-labelledby="cg-earnings-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-earnings-title">Earnings trend</h3>
+                  <p class="ds-card__sub">Last 6 months</p>
+                </div>
+                <span class="ds-tag" data-cg-earnings-total>&#8212;</span>
+              </header>
+              <div class="ds-chart" data-chart="earnings"></div>
+              <div class="ds-table-wrap ds-table-wrap--sr">
+                <table class="ds-table" data-table="earnings">
+                  <caption>Monthly earnings over the last 6 months</caption>
+                  <thead><tr><th scope="col">Month</th><th scope="col">Earnings</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <div class="ds-section">
+            <h2 class="sr-only" id="cg-payout-title">Payout summary</h2>
+            <div class="ds-kpis" data-payout-summary></div>
+          </div>
+        </section>
+
+        <!-- Profile -->
+        <section class="ds-view" id="ds-profile" hidden aria-labelledby="cg-profile-title">
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-profile-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-profile-title">My profile</h3>
+                  <p class="ds-card__sub">Your caregiver details</p>
+                </div>
+                <button class="button button--outline button--small" type="button" data-ds-edit>Edit</button>
+              </header>
+
+              <dl class="ds-profile" data-ds-profile-view></dl>
+
+              <form class="ds-form" data-ds-profile-form novalidate hidden>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="cg-pf-name">Full name</label>
+                  <input class="ds-field__input" id="cg-pf-name" name="fullName" type="text" autocomplete="name">
+                </div>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="cg-pf-phone">Phone</label>
+                  <input class="ds-field__input" id="cg-pf-phone" name="phone" type="tel" autocomplete="tel">
+                </div>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="cg-pf-expertise">Area of expertise</label>
+                  <select class="ds-field__input" id="cg-pf-expertise" name="expertise">
+                    <option value="">Please choose</option>
+                    <option value="nursing">Nursing</option>
+                    <option value="personal-care">Personal care</option>
+                    <option value="companionship">Companionship</option>
+                    <option value="memory-care">Memory care</option>
+                    <option value="respite">Respite care</option>
+                  </select>
+                </div>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="cg-pf-experience">Years of experience</label>
+                  <select class="ds-field__input" id="cg-pf-experience" name="experience">
+                    <option value="">Please choose</option>
+                    <option value="0-1">Less than 1 year</option>
+                    <option value="1-3">1 to 3 years</option>
+                    <option value="3-5">3 to 5 years</option>
+                    <option value="5-10">5 to 10 years</option>
+                    <option value="10-plus">10+ years</option>
+                  </select>
+                </div>
+                <div class="ds-field">
+                  <label class="ds-field__label" for="cg-pf-city">City of service</label>
+                  <input class="ds-field__input" id="cg-pf-city" name="city" type="text" autocomplete="address-level2">
+                </div>
+                <div class="ds-form__actions">
+                  <button class="button" type="submit">Save changes</button>
+                  <button class="button button--text" type="button" data-ds-cancel>Cancel</button>
+                </div>
+                <p class="ds-status" role="status" aria-live="polite" data-ds-profile-status></p>
+              </form>
+            </article>
+          </div>
+
+          <div class="ds-section ds-grid ds-grid--split">
+            <article class="ds-card" aria-labelledby="cg-certs-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-certs-title">Certifications</h3><p class="ds-card__sub">Verified &amp; up to date</p></div>
+              </header>
+              <ul class="ds-list" data-certifications></ul>
+            </article>
+            <article class="ds-card" aria-labelledby="cg-skills-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-skills-title">Skills &amp; strengths</h3><p class="ds-card__sub">What families notice</p></div>
+              </header>
+              <ul class="ds-chips" data-skills></ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Settings -->
+        <section class="ds-view" id="ds-settings" hidden aria-labelledby="cg-settings-title">
+          <div class="ds-section">
+            <article class="ds-card" aria-labelledby="cg-settings-title">
+              <header class="ds-card__head">
+                <div>
+                  <h3 id="cg-settings-title">Settings</h3>
+                  <p class="ds-card__sub">Notifications &amp; preferences</p>
+                </div>
+              </header>
+              <ul class="ds-prefs">
+                <li class="ds-pref">
+                  <span class="ds-pref__label">New visit requests</span>
+                  <button class="ds-switch" type="button" role="switch" aria-checked="true" data-ds-switch aria-label="New visit requests"></button>
+                </li>
+                <li class="ds-pref">
+                  <span class="ds-pref__label">Client message alerts</span>
+                  <button class="ds-switch" type="button" role="switch" aria-checked="true" data-ds-switch aria-label="Client message alerts"></button>
+                </li>
+                <li class="ds-pref">
+                  <span class="ds-pref__label">Weekly earnings summary</span>
+                  <button class="ds-switch" type="button" role="switch" aria-checked="false" data-ds-switch aria-label="Weekly earnings summary"></button>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="ds-section ds-grid ds-grid--split">
+            <article class="ds-card" aria-labelledby="cg-privacy-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-privacy-title">Privacy</h3><p class="ds-card__sub">Control your visibility</p></div>
+              </header>
+              <ul class="ds-prefs">
+                <li class="ds-pref"><span class="ds-pref__label">Show me in family search</span><button class="ds-switch" type="button" role="switch" aria-checked="true" data-ds-switch aria-label="Show me in family search"></button></li>
+                <li class="ds-pref"><span class="ds-pref__label">Share ratings publicly</span><button class="ds-switch" type="button" role="switch" aria-checked="false" data-ds-switch aria-label="Share ratings publicly"></button></li>
+              </ul>
+            </article>
+            <article class="ds-card" aria-labelledby="cg-workprefs-title">
+              <header class="ds-card__head">
+                <div><h3 id="cg-workprefs-title">Work preferences</h3><p class="ds-card__sub">Match to suitable visits</p></div>
+              </header>
+              <ul class="ds-prefs">
+                <li class="ds-pref"><span class="ds-pref__label">Overnight visits</span><button class="ds-switch" type="button" role="switch" aria-checked="false" data-ds-switch aria-label="Overnight visits"></button></li>
+                <li class="ds-pref"><span class="ds-pref__label">Weekend cover</span><button class="ds-switch" type="button" role="switch" aria-checked="true" data-ds-switch aria-label="Weekend cover"></button></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="ds-footer">
+        <p>&copy; 2026 Stackly Elderly Care &middot; Caregiver dashboard</p>
+        <div class="ds-footer__links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <a href="404.html">Privacy</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="ds-tooltip" id="ds-tooltip" role="tooltip" hidden></div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a free Stackly Elderly Care account as a family member arranging care, or as a caregiver joining our team.">
+  <title>Create Account | Stackly Elderly Care</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="js/auth.js?v=3" defer></script>
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="auth-header">
+    <div class="container auth-header__inner">
+      <a class="brand" href="index.html" aria-label="Stackly Elderly Care home">
+        <img class="brand__logo" src="images/logo/logo-stackly.webp" width="346" height="100" alt="Stackly Elderly Care">
+        
+      </a>
+
+      <a class="button button--outline auth-header__home" href="index.html">Go to Home</a>
+    </div>
+  </header>
+
+  <main id="main-content" class="auth-main">
+    <div class="auth-shell">
+      <section class="auth-story" aria-labelledby="auth-story-title">
+        <img class="auth-story__img" src="images/auth-side-signup.webp" width="640" height="800" loading="lazy" decoding="async" alt="Two older women sitting together at a table, smiling and sharing a conversation">
+        <div class="auth-story__scrim" aria-hidden="true"></div>
+        <div class="auth-story__overlay">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line" aria-hidden="true"></span> Join Stackly</p>
+          <h2 class="auth-story__title" id="auth-story-title" data-copy-family="Start caring for the people you love." data-copy-caregiver="Turn your compassion into a career.">Start caring for the people you love.</h2>
+          <p class="auth-story__lead" data-copy-family="Create your free account to arrange care, message your coordinator, and keep everyone connected." data-copy-caregiver="Join our care team and start earning, with flexible hours and real support.">Create your free account to arrange care, message your coordinator, and keep everyone connected.</p>
+          <ul class="auth-story__points" data-role-story="family">
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Free care consultation</li>
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Flexible, no-contract plans</li>
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Cancel anytime</li>
+          </ul>
+          <ul class="auth-story__points" data-role-story="caregiver" hidden>
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Paid training &amp; certification</li>
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Competitive pay &amp; benefits</li>
+            <li><span class="auth-story__tick" aria-hidden="true">&#10003;</span> Real career growth</li>
+          </ul>
+          <div class="auth-story__stats">
+            <div class="auth-story__stat"><strong>4.9<span>/5</span></strong><span>Family rating</span></div>
+            <div class="auth-story__stat"><strong>86<span>+</span></strong><span>Caregivers</span></div>
+            <div class="auth-story__stat"><strong>24<span>/7</span></strong><span>Support</span></div>
+          </div>
+          <figure class="auth-story__quote">
+            <blockquote>&ldquo;They treated my mother like a person, not a case.&rdquo;</blockquote>
+            <figcaption>Margaret D. &middot; daughter of a Stackly client</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="auth-panel" aria-labelledby="auth-form-title">
+        <div class="auth-card">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> Get started</p>
+          <h1 id="auth-form-title" data-copy-family="Create your family account" data-copy-caregiver="Join our care team">Create your family account</h1>
+          <p class="auth-card__lead" data-copy-family="Arrange care for someone you love, in just a few minutes." data-copy-caregiver="Start earning by caring for families near you.">Arrange care for someone you love, in just a few minutes.</p>
+
+          <form class="auth-form" data-auth-form novalidate data-processing-label="Creating account..." data-processing-message="Setting things up..." data-success-message="Account created. Taking you to your home page." data-success-redirect="index.html">
+            <div class="auth-role" role="radiogroup" aria-label="I am signing up as">
+              <label class="auth-role__option">
+                <input class="auth-role__input" type="radio" name="role" value="family" checked>
+                <span>Family / Care Seeker</span>
+              </label>
+              <label class="auth-role__option">
+                <input class="auth-role__input" type="radio" name="role" value="caregiver">
+                <span>Caregiver</span>
+              </label>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-name">Full name</label>
+              <input class="auth-field__input" id="su-name" name="fullName" type="text" autocomplete="name" required data-validate="name" data-label="full name" aria-describedby="su-name-error">
+              <p class="auth-field__error" id="su-name-error" data-error hidden></p>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-email">Email</label>
+              <input class="auth-field__input" id="su-email" name="email" type="email" autocomplete="email" required data-validate="email" data-label="email" aria-describedby="su-email-error">
+              <p class="auth-field__error" id="su-email-error" data-error hidden></p>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-phone">Phone</label>
+              <input class="auth-field__input" id="su-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required data-validate="phone" data-label="phone" aria-describedby="su-phone-error">
+              <p class="auth-field__error" id="su-phone-error" data-error hidden></p>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-password">Password</label>
+              <div class="auth-input">
+                <input class="auth-field__input" id="su-password" name="password" type="password" autocomplete="new-password" required data-validate="password" data-label="password" aria-describedby="su-password-hint su-password-error">
+                <button class="auth-input__toggle" type="button" data-password-toggle aria-pressed="false" aria-controls="su-password" aria-label="Show password"><span data-toggle-text>Show</span></button>
+              </div>
+              <div class="auth-strength" data-strength>
+                <div class="auth-strength__bar"><span class="auth-strength__fill" data-strength-fill></span></div>
+                <p class="auth-strength__text" data-strength-text aria-live="polite">Password strength</p>
+              </div>
+              <p class="auth-field__hint" id="su-password-hint">At least 8 characters with an uppercase letter, a lowercase letter, a number, and a symbol.</p>
+              <p class="auth-field__error" id="su-password-error" data-error hidden></p>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-confirm">Confirm password</label>
+              <div class="auth-input">
+                <input class="auth-field__input" id="su-confirm" name="confirmPassword" type="password" autocomplete="new-password" required data-validate="confirm" data-match="#su-password" data-label="password confirmation" aria-describedby="su-confirm-error">
+                <button class="auth-input__toggle" type="button" data-password-toggle aria-pressed="false" aria-controls="su-confirm" aria-label="Show password confirmation"><span data-toggle-text>Show</span></button>
+              </div>
+              <p class="auth-field__error" id="su-confirm-error" data-error hidden></p>
+            </div>
+
+            <div class="auth-role-fields" data-role-fields="family">
+              <div class="auth-field">
+                <label class="auth-field__label" for="su-relationship">Relationship to the person needing care</label>
+                <select class="auth-field__input" id="su-relationship" name="relationship" required data-validate="select" data-label="relationship" data-empty-message="Please choose your relationship to the person needing care." aria-describedby="su-relationship-error">
+                  <option value="">Please choose an option</option>
+                  <option value="parent">Parent</option>
+                  <option value="spouse">Spouse or partner</option>
+                  <option value="self">Myself</option>
+                  <option value="grandparent">Grandparent</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="auth-field__error" id="su-relationship-error" data-error hidden></p>
+              </div>
+
+              <div class="auth-field">
+                <label class="auth-field__label" for="su-care-type">Type of care needed</label>
+                <select class="auth-field__input" id="su-care-type" name="careType" required data-validate="select" data-label="type of care" data-empty-message="Please choose the type of care needed." aria-describedby="su-care-type-error">
+                  <option value="">Please choose an option</option>
+                  <option value="home-nursing">Home nursing</option>
+                  <option value="companionship">Companionship</option>
+                  <option value="personal-care">Personal care</option>
+                  <option value="respite">Respite care</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+                <p class="auth-field__error" id="su-care-type-error" data-error hidden></p>
+              </div>
+            </div>
+
+            <div class="auth-role-fields" data-role-fields="caregiver" hidden>
+              <div class="auth-field">
+                <label class="auth-field__label" for="su-expertise">Area of expertise</label>
+                <select class="auth-field__input" id="su-expertise" name="expertise" required data-validate="select" data-label="area of expertise" data-empty-message="Please choose your area of expertise." aria-describedby="su-expertise-error">
+                  <option value="">Please choose an option</option>
+                  <option value="nursing">Nursing</option>
+                  <option value="personal-care">Personal care</option>
+                  <option value="companionship">Companionship</option>
+                  <option value="memory-care">Memory care</option>
+                  <option value="respite">Respite care</option>
+                </select>
+                <p class="auth-field__error" id="su-expertise-error" data-error hidden></p>
+              </div>
+
+              <div class="auth-field">
+                <label class="auth-field__label" for="su-experience">Years of experience</label>
+                <select class="auth-field__input" id="su-experience" name="experience" required data-validate="select" data-label="years of experience" data-empty-message="Please choose your years of experience." aria-describedby="su-experience-error">
+                  <option value="">Please choose an option</option>
+                  <option value="0-1">Less than 1 year</option>
+                  <option value="1-3">1 to 3 years</option>
+                  <option value="3-5">3 to 5 years</option>
+                  <option value="5-10">5 to 10 years</option>
+                  <option value="10-plus">10+ years</option>
+                </select>
+                <p class="auth-field__error" id="su-experience-error" data-error hidden></p>
+              </div>
+
+              <div class="auth-field">
+                <label class="auth-field__label" for="su-city">City of service</label>
+                <input class="auth-field__input" id="su-city" name="city" type="text" autocomplete="address-level2" placeholder="Salem" required data-validate="city" data-label="city of service" aria-describedby="su-city-error">
+                <p class="auth-field__error" id="su-city-error" data-error hidden></p>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-field__label" for="su-referral">How did you hear about us? (optional)</label>
+              <select class="auth-field__input" id="su-referral" name="referral">
+                <option value="">Please choose an option</option>
+                <option value="search">Search engine</option>
+                <option value="friend">Friend or family</option>
+                <option value="doctor">Doctor or hospital</option>
+                <option value="social">Social media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-check" for="su-terms">
+                <input id="su-terms" name="terms" type="checkbox" required data-validate="checkbox" data-label="terms and privacy agreement" aria-describedby="su-terms-error">
+                <span>I agree to the <a href="index.html#contact">Terms of Service</a> and <a href="index.html#contact">Privacy Policy</a>.</span>
+              </label>
+              <p class="auth-field__error" id="su-terms-error" data-error hidden></p>
+            </div>
+
+            <p class="auth-summary" data-form-summary role="alert" hidden></p>
+
+            <button class="button auth-submit" type="submit" data-submit data-copy-family="Create account" data-copy-caregiver="Join as a caregiver">Create account</button>
+            <p class="auth-status" data-form-status role="status" aria-live="polite"></p>
+          </form>
+
+          <p class="auth-switch">Already have an account? <a data-role-link data-base="login.html" href="login.html?role=family">Log in</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="auth-footer">
+    <div class="container auth-footer__inner">
+      <a class="brand brand--footer" href="index.html" aria-label="Stackly Elderly Care home">
+        <img class="brand__logo" src="images/logo/logo-stackly.webp" width="346" height="100" alt="Stackly Elderly Care">
+        
+      </a>
+
+      <p class="auth-footer__copy">&copy; 2026 Stackly Elderly Care. Made with care.</p>
+
+      <div class="auth-footer__links">
+        <a href="404.html">Privacy</a>
+        <a href="404.html">Terms</a>
+        <a href="404.html">Accessibility</a>
+      </div>
+
+      <div class="footer-socials" aria-label="Social media links">
+        <a href="404.html" aria-label="Stackly Care on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a href="404.html" aria-label="Stackly Care on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h2V4.4c-.3-.1-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3V11H6v4h3.3v5h4v-5h3.3l.5-4h-3.8V8.9c0-1.1.3-1.9 1.7-1.9Z"/></svg></a>
+        <a href="404.html" aria-label="Stackly Care on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 8.6H1.6V20h3.6V8.6ZM3.4 4A2.1 2.1 0 1 0 3.4 8.2 2.1 2.1 0 0 0 3.4 4ZM22.4 13.5c0-3.4-1.8-5.2-4.4-5.2-2 0-2.9 1.1-3.4 1.8V8.6H11V20h3.6v-5.6c0-1.5.3-2.9 2.1-2.9 1.8 0 1.8 1.7 1.8 3V20H22.4v-6.5Z"/></svg></a>
+      <a href="404.html" aria-label="Stackly Care on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3H22l-6.8 7.8L22.8 21h-6.3l-4.4-5.7L6.9 21H3.8l7.3-8.4L3.1 3h6.4l4 5.2L18.9 3Zm-1.1 16.2h1.7L7.1 4.7H5.3l12.5 14.5Z"/></svg></a></div>
+    </div>
+  </footer>
+
+  <div class="auth-toast" data-toast role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,667 @@
+@import url("style.css");
+
+/* ==========================================================================
+   Services page — page-specific layout only.
+   Colour, spacing, radius, shadow and typography tokens are inherited from
+   the shared homepage stylesheet (css/style.css) via the @import above.
+   ========================================================================== */
+
+.svc-lead {
+  max-width: 44rem;
+  margin-top: 1.25rem;
+  color: var(--color-slate);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.svc-lead--light {
+  color: rgba(255, 253, 249, 0.82);
+}
+
+/* 1. Services hero (immersive banner) ------------------------------------- */
+.svc-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: clamp(30rem, 62vh, 40rem);
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  color: var(--color-white);
+}
+
+.svc-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.svc-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) saturate(1.05);
+  transform: scale(1.07);
+}
+
+.svc-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(16, 48, 47, 0.62), rgba(16, 48, 47, 0.86)), radial-gradient(120% 80% at 50% 15%, rgba(29, 113, 107, 0.5), rgba(16, 48, 47, 0.2));
+}
+
+.svc-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.svc-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  color: rgba(255, 253, 249, 0.75);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.svc-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.svc-breadcrumb li + li::before {
+  color: rgba(255, 253, 249, 0.5);
+  content: "/";
+}
+
+.svc-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-sage);
+  transition: color 180ms var(--ease);
+}
+
+.svc-breadcrumb a:hover,
+.svc-breadcrumb a:focus-visible {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.svc-breadcrumb [aria-current="page"] {
+  color: var(--color-white);
+}
+
+.svc-hero__inner .eyebrow {
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.svc-hero__title {
+  max-width: 20ch;
+  margin-top: 1.1rem;
+  color: var(--color-white);
+  font-size: clamp(2.4rem, 6.4vw, 4.5rem);
+}
+
+.svc-hero__lead {
+  max-width: 46rem;
+  margin-top: 1.4rem;
+  color: rgba(255, 253, 249, 0.86);
+  font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+  line-height: 1.72;
+}
+
+.svc-hero__actions {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.svc-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.25rem;
+}
+
+.svc-hero__chips li {
+  display: inline-flex;
+}
+
+.svc-hero__chips a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 253, 249, 0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 253, 249, 0.08);
+  color: var(--color-white);
+  font-size: 0.82rem;
+  font-weight: 800;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background-color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
+}
+
+.svc-hero__chips a:hover,
+.svc-hero__chips a:focus-visible {
+  border-color: var(--color-white);
+  background: rgba(255, 253, 249, 0.18);
+  transform: translateY(-2px);
+}
+
+/* 2. Services overview + tabs --------------------------------------------- */
+.svc-overview {
+  background: var(--color-white);
+}
+
+.svc-overview__head {
+  max-width: 48rem;
+}
+
+.svc-overview__head h2 {
+  max-width: 20ch;
+  margin-top: 1rem;
+}
+
+.svc-tabs {
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.svc-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+}
+
+.svc-tab {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-slate);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.2;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+
+.svc-tab:hover {
+  color: var(--color-teal-dark);
+}
+
+.svc-tab[aria-selected="true"] {
+  background: var(--color-teal);
+  box-shadow: var(--shadow-button);
+  color: var(--color-white);
+}
+
+.svc-tab:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.svc-tabs__panels {
+  margin-top: 1.5rem;
+}
+
+.svc-panel {
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+.svc-panel[hidden] {
+  display: none;
+}
+
+.svc-panel.is-active {
+  animation: svcFade 340ms var(--ease);
+}
+
+@keyframes svcFade {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to { opacity: 1; transform: none; }
+}
+
+.svc-panel__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+.svc-panel__copy h3 {
+  margin-top: 0.25rem;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+
+.svc-panel__copy > p {
+  margin-top: 0.75rem;
+  color: var(--color-slate);
+  line-height: 1.7;
+}
+
+.svc-panel__list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.svc-panel__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--color-slate);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.svc-panel__list strong {
+  color: var(--color-ink-deep);
+}
+
+.svc-panel__tick {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.svc-panel__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+/* 3. Core services grid --------------------------------------------------- */
+.svc-core {
+  background: var(--color-cream);
+}
+
+.svc-core__head {
+  display: grid;
+  gap: 1.25rem 3rem;
+  align-items: end;
+}
+
+.svc-core__head h2 {
+  max-width: 15ch;
+  margin-top: 0.9rem;
+}
+
+.svc-core__aside {
+  max-width: 30rem;
+  color: var(--color-slate);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.svc-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 10px 30px rgba(20, 57, 55, 0.05);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+
+.svc-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-5px);
+}
+
+.svc-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-card__media img {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+
+.svc-card:hover .svc-card__media img {
+  transform: scale(1.04);
+}
+
+.svc-card__icon {
+  position: absolute;
+  left: 1rem;
+  bottom: -1.3rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 1rem;
+  background: var(--color-teal);
+  box-shadow: var(--shadow-card);
+  color: var(--color-white);
+}
+
+.svc-card__icon svg {
+  width: 1.4rem;
+}
+
+.svc-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.9rem 1.4rem 1.4rem;
+}
+
+.svc-card h3 {
+  color: var(--color-ink-deep);
+  font-size: 1.45rem;
+}
+
+.svc-card__body > p {
+  margin-top: 0.55rem;
+  color: var(--color-slate);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.svc-card__features {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.svc-card__features li {
+  position: relative;
+  padding-left: 1.45rem;
+  color: var(--color-slate);
+  font-size: 0.86rem;
+}
+
+.svc-card__features li::before {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.2rem;
+  width: 0.42rem;
+  height: 0.22rem;
+  border-bottom: 2px solid var(--color-teal);
+  border-left: 2px solid var(--color-teal);
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.svc-card .card-link {
+  margin-top: auto;
+  padding-top: 1.2rem;
+}
+
+/* 4. Signature spotlight -------------------------------------------------- */
+.svc-spotlight {
+  overflow: hidden;
+  padding-block: clamp(4.75rem, 10vw, 8.5rem);
+  background: var(--color-teal-dark);
+  color: var(--color-white);
+}
+
+.svc-spotlight__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.svc-spotlight__media {
+  position: relative;
+  width: min(100%, 34rem);
+  margin-inline: auto;
+}
+
+.svc-spotlight__media img {
+  width: 100%;
+  aspect-ratio: 19 / 14;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0.75rem;
+  object-fit: cover;
+}
+
+.svc-spotlight__tag {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.svc-spotlight__tag strong {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.svc-spotlight__tag span {
+  color: var(--color-slate);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.svc-spotlight h2 {
+  margin-top: 1rem;
+  color: var(--color-white);
+}
+
+.svc-benefits {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+.svc-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: rgba(255, 253, 249, 0.85);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.svc-benefits__icon {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(168, 198, 183, 0.2);
+  color: var(--color-sage);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.svc-spotlight__actions {
+  margin-top: 2rem;
+}
+
+/* 5. Care process timeline ------------------------------------------------ */
+.svc-process {
+  background: var(--color-sand);
+}
+
+.svc-process__head {
+  max-width: 44rem;
+}
+
+.svc-process__head h2 {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.svc-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.svc-step {
+  position: relative;
+  min-width: 0;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.svc-step__icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 1rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+}
+
+.svc-step__icon svg {
+  width: 1.5rem;
+}
+
+.svc-step__num {
+  display: block;
+  margin-top: 1rem;
+  color: var(--color-coral-dark);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.svc-step h3 {
+  margin-top: 0.15rem;
+  color: var(--color-ink-deep);
+  font-size: 1.3rem;
+}
+
+.svc-step p {
+  margin-top: 0.5rem;
+  color: var(--color-slate);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 6. FAQ + final CTA ------------------------------------------------------ */
+.svc-closing {
+  background: var(--color-white);
+}
+
+.svc-closing .cta-band {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+/* Responsive layout ------------------------------------------------------- */
+@media (max-width: 40rem) {
+  .svc-tabs__list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .svc-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 40rem) {
+  .svc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .svc-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .svc-core__head {
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.6fr);
+  }
+
+  .svc-panel__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .svc-spotlight__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .svc-steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .svc-step::after {
+    position: absolute;
+    top: 2.5rem;
+    right: -0.7rem;
+    width: 1.4rem;
+    height: 2px;
+    background: var(--color-line);
+    content: "";
+  }
+
+  .svc-step:last-child::after {
+    display: none;
+  }
+}
+
+@media (min-width: 70rem) {
+  .svc-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-panel.is-active {
+    animation: none;
+  }
+}

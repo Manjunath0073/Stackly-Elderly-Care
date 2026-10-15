@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>audit</title></head>
+<body>
+<pre id="result">pending</pre>
+<script>
+var params = new URLSearchParams(location.search);
+var role = params.get('role') || 'family';
+var file = role === 'caregiver' ? 'dashboard-caregiver.html' : 'dashboard-family.html';
+try {
+  localStorage.setItem('stackly_user', JSON.stringify({ role: role, name: 'Audit User', email: 'a@b.com' }));
+} catch (e) {}
+
+var frame = document.createElement('iframe');
+frame.setAttribute('width', '320');
+frame.setAttribute('height', '640');
+frame.style.width = '320px';
+frame.style.height = '640px';
+frame.style.border = '0';
+document.body.appendChild(frame);
+frame.src = file;
+
+frame.onload = function () {
+  setTimeout(function () {
+    var d, de, cw, iw, out;
+    try {
+      d = frame.contentDocument;
+      de = d.documentElement;
+      cw = de.clientWidth;
+      iw = frame.contentWindow.innerWidth;
+      var bad = [];
+      var all = d.querySelectorAll('*');
+      for (var i = 0; i < all.length; i++) {
+        var el = all[i];
+        var r = el.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) continue;
+        if (r.right > cw + 0.5 || r.left < -0.5) {
+          var cls = (el.className && typeof el.className === 'string') ? '.' + el.className.trim().replace(/\s+/g, '.') : '';
+          bad.push(el.tagName.toLowerCase() + cls + ' left=' + Math.round(r.left) + ' right=' + Math.round(r.right) + ' w=' + Math.round(r.width));
+        }
+      }
+      out = {
+        file: file,
+        innerWidth: iw,
+        clientWidth: cw,
+        docScrollWidth: de.scrollWidth,
+        bodyScrollWidth: d.body.scrollWidth,
+        hasHScroll: de.scrollWidth > cw,
+        overflowingCount: bad.length,
+        overflowing: bad.slice(0, 50)
+      };
+      document.getElementById('result').textContent = 'AUDIT_RESULT ' + JSON.stringify(out, null, 1);
+    } catch (e) {
+      document.getElementById('result').textContent = 'AUDIT_ERROR ' + e.message;
+    }
+  }, 2500);
+};
+</script>
+</body>
+</html>

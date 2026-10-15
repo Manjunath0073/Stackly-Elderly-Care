@@ -1,0 +1,942 @@
+@import url("style.css");
+
+/* ==========================================================================
+   Pricing page — page-specific layout only.
+   Colour, spacing, radius, shadow and typography tokens are inherited from
+   the shared homepage stylesheet (css/style.css) via the @import above.
+   ========================================================================== */
+
+.pr-lead {
+  max-width: 44rem;
+  margin-top: 1.25rem;
+  color: var(--color-slate);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.pr-hero__inner > *,
+.pr-funding__grid > *,
+.pr-included__grid > *,
+.pr-trust > * {
+  min-width: 0;
+}
+
+/* 1. Pricing hero ---------------------------------------------------------- */
+.pr-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2rem, 5vw, 3rem) clamp(3.5rem, 8vw, 5.5rem);
+  background: linear-gradient(180deg, var(--color-white), var(--color-cream));
+  text-align: center;
+}
+
+.pr-hero__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(rgba(29, 113, 107, 0.09) 1.5px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 8%, #000 28%, transparent 76%);
+  mask-image: radial-gradient(120% 90% at 50% 8%, #000 28%, transparent 76%);
+}
+
+.pr-hero__wash {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.pr-hero__wash--one {
+  top: -9rem;
+  right: -9rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(168, 198, 183, 0.3);
+}
+
+.pr-hero__wash--two {
+  bottom: -11rem;
+  left: -11rem;
+  width: 26rem;
+  height: 26rem;
+  background: rgba(241, 233, 220, 0.9);
+}
+
+.pr-hero__inner {
+  display: grid;
+  justify-items: center;
+}
+
+.pr-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  color: var(--color-slate);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.pr-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.pr-breadcrumb li + li::before {
+  color: var(--color-sage);
+  content: "/";
+  font-weight: 700;
+}
+
+.pr-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-teal);
+  transition: color 180ms var(--ease);
+}
+
+.pr-breadcrumb a:hover,
+.pr-breadcrumb a:focus-visible {
+  color: var(--color-teal-dark);
+  text-decoration: underline;
+}
+
+.pr-breadcrumb [aria-current="page"] {
+  color: var(--color-ink-deep);
+}
+
+.pr-hero__eyebrow {
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.pr-hero__title {
+  max-width: 19ch;
+  margin-top: 1rem;
+}
+
+.pr-hero__lead {
+  max-width: 48rem;
+  margin-top: 1.35rem;
+  color: var(--color-slate);
+  font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+  line-height: 1.72;
+}
+
+.pr-hero__actions {
+  margin-top: 2rem;
+}
+
+.pr-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.1rem;
+  margin-top: 1.75rem;
+  color: var(--color-slate);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.pr-hero__chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pr-hero__chip-icon {
+  display: inline-grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+/* 2. Pricing plans --------------------------------------------------------- */
+.pr-plans {
+  background: var(--color-white);
+}
+
+.pr-plans__head {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.pr-plans__head .eyebrow {
+  justify-content: center;
+}
+
+.pr-plans__head h2 {
+  margin-top: 1rem;
+}
+
+.pr-plans__head .pr-lead {
+  margin-inline: auto;
+}
+
+.pr-toggle-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.pr-toggle {
+  display: inline-flex;
+  padding: 0.35rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+}
+
+.pr-toggle__option {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-slate);
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+
+.pr-toggle__option:hover {
+  color: var(--color-teal-dark);
+}
+
+.pr-toggle__option.is-active {
+  background: var(--color-teal);
+  box-shadow: var(--shadow-button);
+  color: var(--color-white);
+}
+
+.pr-toggle__option:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.pr-toggle__note {
+  color: var(--color-slate);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pr-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.pr-plan {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.15rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+.pr-plan--featured {
+  border-color: var(--color-teal-dark);
+  background: var(--color-teal-dark);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-white);
+}
+
+.pr-plan__popular {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.65rem;
+  background: var(--color-coral);
+  color: var(--color-white);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pr-plan__tagline {
+  color: var(--color-teal);
+  font-size: 0.73rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pr-plan--featured .pr-plan__tagline {
+  color: var(--color-sage);
+}
+
+.pr-plan__name {
+  margin-top: 0.45rem;
+  font-size: 2.2rem;
+}
+
+.pr-plan--featured .pr-plan__name {
+  color: var(--color-white);
+}
+
+.pr-plan__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-top: 1.1rem;
+}
+
+.pr-plan__price strong {
+  color: var(--color-ink-deep);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.pr-plan--featured .pr-plan__price strong {
+  color: var(--color-white);
+}
+
+.pr-plan__price span {
+  color: var(--color-slate);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pr-plan--featured .pr-plan__price span {
+  color: rgba(255, 253, 249, 0.64);
+}
+
+.pr-plan__description {
+  min-height: 4.6rem;
+  margin-top: 0.7rem;
+  color: var(--color-slate);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.pr-plan--featured .pr-plan__description {
+  color: rgba(255, 253, 249, 0.7);
+}
+
+.pr-plan__cta {
+  margin-top: 1.4rem;
+}
+
+.pr-plan__includes {
+  margin-top: 1.5rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-deep);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.pr-plan--featured .pr-plan__includes {
+  border-color: var(--color-line-dark);
+  color: var(--color-white);
+}
+
+.pr-feature-list {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.pr-feature-list li {
+  position: relative;
+  padding-left: 1.45rem;
+  color: var(--color-slate);
+  font-size: 0.86rem;
+}
+
+.pr-feature-list li::before {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.2rem;
+  width: 0.42rem;
+  height: 0.22rem;
+  border-bottom: 2px solid var(--color-teal);
+  border-left: 2px solid var(--color-teal);
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.pr-plan--featured .pr-feature-list li {
+  color: rgba(255, 253, 249, 0.72);
+}
+
+.pr-plan--featured .pr-feature-list li::before {
+  border-color: var(--color-sage);
+}
+
+.pr-plans__note {
+  margin-top: 1.7rem;
+  color: var(--color-slate);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.pr-plans__note a {
+  color: var(--color-teal);
+  font-weight: 800;
+}
+
+/* 3. What's included / add-ons -------------------------------------------- */
+.pr-included {
+  background: var(--color-cream);
+}
+
+.pr-included__head {
+  max-width: 46rem;
+}
+
+.pr-included__head h2 {
+  max-width: 20ch;
+  margin-top: 1rem;
+}
+
+.pr-included__grid {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.pr-included__panel {
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.pr-included__panel--addons {
+  background: var(--color-sand);
+}
+
+.pr-included__panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-ink-deep);
+  font-size: 1.35rem;
+}
+
+.pr-included__panel-title small {
+  color: var(--color-slate);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.pr-included__badge {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.7rem;
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.pr-included__badge--yes {
+  background: var(--color-teal);
+}
+
+.pr-included__badge--plus {
+  background: var(--color-coral);
+}
+
+.pr-included__list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+.pr-included__list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--color-slate);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.pr-included__list li::before {
+  position: absolute;
+  top: 0.35rem;
+  left: 0;
+  width: 0.5rem;
+  height: 0.28rem;
+  border-bottom: 2px solid var(--color-teal);
+  border-left: 2px solid var(--color-teal);
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.pr-included__panel--addons .pr-included__list li::before {
+  top: 0;
+  left: 0.1rem;
+  width: auto;
+  height: auto;
+  border: 0;
+  color: var(--color-coral);
+  content: "+";
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1;
+  transform: none;
+}
+
+/* 4. Plan comparison table ------------------------------------------------- */
+.pr-compare {
+  background: var(--color-white);
+}
+
+.pr-compare__head {
+  max-width: 46rem;
+}
+
+.pr-compare__head h2 {
+  max-width: 20ch;
+  margin-top: 1rem;
+}
+
+.pr-table-wrap {
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.pr-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.pr-table th,
+.pr-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  overflow-wrap: break-word;
+}
+
+.pr-table thead th {
+  position: sticky;
+  top: 5rem;
+  z-index: 2;
+  border-bottom: 2px solid var(--color-teal);
+  background: var(--color-teal-dark);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pr-table thead th:first-child {
+  border-top-left-radius: var(--radius-md);
+}
+
+.pr-table thead th:last-child {
+  border-top-right-radius: var(--radius-md);
+}
+
+.pr-table thead th.pr-table__highlight {
+  background: var(--color-teal);
+}
+
+.pr-table__flag {
+  display: inline-block;
+  margin-left: 0.35rem;
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.45rem;
+  background: var(--color-coral);
+  color: var(--color-white);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+.pr-table tbody th {
+  color: var(--color-ink-deep);
+  font-weight: 800;
+}
+
+.pr-table tbody th,
+.pr-table tbody td {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.pr-table tbody tr:last-child th,
+.pr-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.pr-table tbody td {
+  color: var(--color-slate);
+}
+
+.pr-table td.pr-table__highlight {
+  background: rgba(220, 238, 232, 0.5);
+}
+
+.pr-table tbody tr:hover th,
+.pr-table tbody tr:hover td {
+  background-color: rgba(220, 238, 232, 0.35);
+}
+
+.pr-rate {
+  white-space: nowrap;
+}
+
+.pr-yes {
+  color: var(--color-teal);
+  font-weight: 900;
+}
+
+.pr-no {
+  color: #b9c8c1;
+  font-weight: 900;
+}
+
+/* 5. Funding & insurance --------------------------------------------------- */
+.pr-funding {
+  background: var(--color-sand);
+}
+
+.pr-funding__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.pr-funding__content h2 {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.pr-funding__options {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.pr-funding__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.pr-funding__icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.9rem;
+  background: var(--color-white);
+  box-shadow: 0 8px 20px rgba(20, 57, 55, 0.06);
+  color: var(--color-teal);
+}
+
+.pr-funding__icon svg {
+  width: 1.35rem;
+}
+
+.pr-funding__option h3 {
+  color: var(--color-ink-deep);
+  font-size: 1.1rem;
+}
+
+.pr-funding__option p {
+  margin-top: 0.25rem;
+  color: var(--color-slate);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.pr-funding__cta {
+  margin-top: 2rem;
+}
+
+.pr-funding__media {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.pr-funding__media img {
+  width: 100%;
+  aspect-ratio: 32 / 23;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0.75rem;
+  object-fit: cover;
+}
+
+.pr-funding__badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.pr-funding__badge strong {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.pr-funding__badge span {
+  color: var(--color-slate);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* 6. Trust + FAQ + final CTA ---------------------------------------------- */
+.pr-closing {
+  background: var(--color-white);
+}
+
+.pr-trust {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+.pr-trust__media {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.pr-trust__media img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.pr-trust__body {
+  min-width: 0;
+}
+
+.pr-trust__title {
+  margin-top: 0.9rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.pr-trust__list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pr-trust__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.pr-trust__icon {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.pr-trust__list strong {
+  display: block;
+  color: var(--color-ink-deep);
+  font-size: 0.98rem;
+}
+
+.pr-trust__list small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-slate);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.pr-faq {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.pr-closing .cta-band {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+/* Responsive layout ------------------------------------------------------- */
+@media (min-width: 40rem) {
+  .pr-included__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 44rem) and (max-width: 61.99rem) {
+  .pr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pr-plan--featured {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+}
+
+@media (min-width: 48rem) {
+  .pr-funding__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .pr-trust {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .pr-trust__media img {
+    min-height: 15rem;
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: 62rem) {
+  .pr-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .pr-plan--featured {
+    grid-column: auto;
+    order: 0;
+    transform: translateY(-1rem);
+  }
+}
+
+/* Comparison table → stacked feature cards on small screens */
+@media (max-width: 47.99rem) {
+  .pr-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pr-table,
+  .pr-table tbody,
+  .pr-table tr,
+  .pr-table th,
+  .pr-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .pr-table tbody tr {
+    margin-bottom: 1rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-cream);
+  }
+
+  .pr-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .pr-table tbody th {
+    padding: 0 0 0.6rem;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 1.05rem;
+  }
+
+  .pr-table tbody td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  .pr-table tbody tr td:last-child {
+    border-bottom: 0;
+  }
+
+  .pr-table tbody td::before {
+    color: var(--color-slate);
+    content: attr(data-label);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .pr-table td.pr-table__highlight {
+    background: transparent;
+  }
+
+  .pr-table tbody td.pr-table__highlight {
+    color: var(--color-teal-dark);
+    font-weight: 800;
+  }
+}
+
+@media (max-width: 27rem) {
+  .pr-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pr-toggle__option {
+    flex: 1;
+    justify-content: center;
+    padding-inline: 0.8rem;
+  }
+
+  .pr-hero__chips {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+}

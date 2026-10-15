@@ -1,0 +1,1069 @@
+@import url("style.css");
+
+/* ==========================================================================
+   Caregivers page — page-specific layout only.
+   Colour, spacing, radius, shadow and typography tokens are inherited from
+   the shared homepage stylesheet (css/style.css) via the @import above.
+   ========================================================================== */
+
+.cg-lead {
+  max-width: 44rem;
+  margin-top: 1.25rem;
+  color: var(--color-slate);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.cg-lead--light {
+  color: rgba(255, 253, 249, 0.82);
+}
+
+.cg-hero__inner > *,
+.cg-philosophy__grid > *,
+.cg-training__grid > *,
+.cg-day__row > *,
+.cg-join__grid > *,
+.cg-modal__panel > * {
+  min-width: 0;
+}
+
+/* 1. Caregivers hero ------------------------------------------------------- */
+.cg-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2rem, 5vw, 3.5rem) clamp(4rem, 9vw, 7rem);
+  background: linear-gradient(180deg, var(--color-white), var(--color-cream));
+}
+
+.cg-hero__wash {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.cg-hero__wash--one {
+  top: -12rem;
+  left: -12rem;
+  width: 30rem;
+  height: 30rem;
+  background: rgba(168, 198, 183, 0.26);
+}
+
+.cg-hero__wash--two {
+  right: -14rem;
+  bottom: -14rem;
+  width: 32rem;
+  height: 32rem;
+  background: rgba(241, 233, 220, 0.9);
+}
+
+.cg-hero__inner {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 5rem);
+}
+
+.cg-hero__title {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.cg-hero__title em {
+  color: var(--color-teal);
+  font-style: italic;
+}
+
+.cg-hero__lead {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  color: var(--color-slate);
+  font-size: clamp(1.08rem, 1.7vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.cg-hero__actions {
+  margin-top: 2rem;
+}
+
+.cg-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.35rem;
+  margin-top: 2rem;
+  color: var(--color-slate);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.cg-hero__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cg-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-slate);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.cg-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cg-breadcrumb li + li::before {
+  color: var(--color-sage);
+  content: "/";
+  font-weight: 700;
+}
+
+.cg-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-teal);
+  transition: color 180ms var(--ease);
+}
+
+.cg-breadcrumb a:hover,
+.cg-breadcrumb a:focus-visible {
+  color: var(--color-teal-dark);
+  text-decoration: underline;
+}
+
+.cg-breadcrumb [aria-current="page"] {
+  color: var(--color-ink-deep);
+}
+
+/* Offset portrait cluster */
+.cg-hero__cluster {
+  position: relative;
+  width: min(100%, 30rem);
+  aspect-ratio: 5 / 4;
+  margin-inline: auto;
+}
+
+.cg-hero__portrait {
+  position: absolute;
+  overflow: hidden;
+  border: 0.5rem solid var(--color-white);
+  background: var(--color-sand);
+  box-shadow: var(--shadow-card);
+}
+
+.cg-hero__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cg-hero__portrait--a {
+  top: 6%;
+  left: 0;
+  z-index: 1;
+  width: 58%;
+  aspect-ratio: 4 / 5;
+  border-radius: 2.5rem 2.5rem 2.5rem 0.75rem;
+}
+
+.cg-hero__portrait--b {
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 44%;
+  aspect-ratio: 4 / 5;
+  border-radius: 2rem 2rem 0.75rem 2rem;
+  transform: rotate(3deg);
+}
+
+.cg-hero__portrait--c {
+  right: 4%;
+  bottom: 0;
+  z-index: 3;
+  width: 46%;
+  aspect-ratio: 4 / 5;
+  border-radius: 2rem 0.75rem 2rem 2rem;
+  transform: rotate(-3deg);
+}
+
+.cg-hero__badge {
+  position: absolute;
+  bottom: 4%;
+  left: 0;
+  z-index: 4;
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.85rem 1.05rem;
+  border: 1px solid rgba(216, 226, 220, 0.9);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.97);
+  box-shadow: var(--shadow-card);
+}
+
+.cg-hero__badge-value {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.cg-hero__badge-label {
+  max-width: 9rem;
+  color: var(--color-slate);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cg-hero__chip {
+  position: absolute;
+  top: -0.6rem;
+  left: 32%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal);
+  box-shadow: var(--shadow-button);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.cg-hero__chip-star {
+  color: var(--color-gold);
+}
+
+/* 2. Our care philosophy --------------------------------------------------- */
+.cg-philosophy {
+  background: var(--color-white);
+}
+
+.cg-philosophy__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 5rem);
+}
+
+.cg-philosophy__media {
+  position: relative;
+  width: min(100%, 28rem);
+  margin-inline: auto;
+}
+
+.cg-philosophy__frame {
+  padding: 0.65rem;
+  border-radius: 3rem 3rem 3rem 0.75rem;
+  background: var(--color-teal-mist);
+}
+
+.cg-philosophy__frame img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: 2.4rem 2.4rem 2.4rem 0.5rem;
+  object-fit: cover;
+}
+
+.cg-philosophy__tag {
+  position: absolute;
+  right: 0.5rem;
+  bottom: -1rem;
+  display: grid;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-md) 0.4rem var(--radius-md) var(--radius-md);
+  background: var(--color-teal);
+  box-shadow: var(--shadow-card);
+  color: var(--color-white);
+}
+
+.cg-philosophy__tag strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.cg-philosophy__tag span {
+  color: var(--color-sage);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cg-philosophy__content h2 {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.cg-steps {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.cg-step {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  min-width: 0;
+}
+
+.cg-step__num {
+  color: var(--color-coral-dark);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.cg-step h3 {
+  color: var(--color-ink-deep);
+  font-size: 1.15rem;
+}
+
+.cg-step p {
+  margin-top: 0.25rem;
+  color: var(--color-slate);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.cg-philosophy__content .text-link {
+  margin-top: 2rem;
+}
+
+/* 3. Caregiver directory --------------------------------------------------- */
+.cg-directory {
+  background: var(--color-cream);
+}
+
+.cg-directory__head {
+  max-width: 48rem;
+}
+
+.cg-directory__head h2 {
+  max-width: 18ch;
+  margin-top: 1rem;
+}
+
+.cg-filters {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.cg-filter-group {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.cg-filter-group__label {
+  color: var(--color-ink-deep);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cg-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cg-filter {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+  color: var(--color-slate);
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: background-color 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
+}
+
+.cg-filter:hover {
+  border-color: var(--color-sage);
+  color: var(--color-teal-dark);
+  transform: translateY(-1px);
+}
+
+.cg-filter.is-active {
+  border-color: var(--color-teal);
+  background: var(--color-teal);
+  box-shadow: var(--shadow-button);
+  color: var(--color-white);
+}
+
+.cg-filter:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.cg-directory__count {
+  color: var(--color-slate);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.cg-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-top: 2rem;
+}
+
+.cg-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 10px 30px rgba(20, 57, 55, 0.05);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+
+.cg-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-5px);
+}
+
+.cg-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-sage);
+}
+
+.cg-card__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+
+.cg-card:hover .cg-card__media img {
+  transform: scale(1.04);
+}
+
+.cg-card__years {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.7rem;
+  background: rgba(255, 253, 249, 0.93);
+  color: var(--color-ink-deep);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.cg-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.25rem;
+}
+
+.cg-card__role {
+  color: var(--color-teal);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.cg-card__name {
+  margin-top: 0.25rem;
+  color: var(--color-ink-deep);
+  font-size: 1.5rem;
+}
+
+.cg-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.cg-card__tags li {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.6rem;
+  color: var(--color-slate);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.cg-card__meta {
+  margin-bottom: 1.25rem;
+  color: var(--color-slate);
+  font-size: 0.82rem;
+}
+
+.cg-card__cta {
+  width: 100%;
+  margin-top: auto;
+}
+
+.cg-directory__empty {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-lg);
+  color: var(--color-slate);
+  text-align: center;
+}
+
+.cg-directory__empty a {
+  color: var(--color-teal);
+  font-weight: 800;
+}
+
+/* 4. Training & certification --------------------------------------------- */
+.cg-training {
+  overflow: hidden;
+  padding-block: clamp(4.75rem, 10vw, 8.5rem);
+  background: var(--color-teal-dark);
+  color: var(--color-white);
+}
+
+.cg-training h2 {
+  color: var(--color-white);
+}
+
+.cg-training__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.cg-training__content h2 {
+  max-width: 14ch;
+  margin-top: 1rem;
+}
+
+.cg-creds {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.cg-cred {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: rgba(255, 253, 249, 0.85);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.cg-cred__icon {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(168, 198, 183, 0.2);
+  color: var(--color-sage);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.cg-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-line-dark);
+}
+
+.cg-stat {
+  min-width: 0;
+}
+
+.cg-stat strong {
+  display: block;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.cg-stat span {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(255, 253, 249, 0.7);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cg-training__media {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.cg-training__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0.75rem;
+  object-fit: cover;
+}
+
+.cg-training__badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.cg-training__badge strong {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.cg-training__badge span {
+  color: var(--color-slate);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* 5. A day in the life ----------------------------------------------------- */
+.cg-day {
+  background: var(--color-sand);
+}
+
+.cg-day__head {
+  max-width: 44rem;
+}
+
+.cg-day__head h2 {
+  max-width: 16ch;
+  margin-top: 1rem;
+}
+
+.cg-day__rows {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.cg-day__row {
+  display: grid;
+  align-items: center;
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.cg-day__media {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.cg-day__media img {
+  width: 100%;
+  aspect-ratio: 13 / 9;
+  object-fit: cover;
+}
+
+.cg-day__time {
+  color: var(--color-coral-dark);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.cg-day__copy h3 {
+  margin-top: 0.25rem;
+  color: var(--color-ink-deep);
+  font-size: 1.5rem;
+}
+
+.cg-day__copy p {
+  margin-top: 0.6rem;
+  color: var(--color-slate);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* 6. Caregiver stories ----------------------------------------------------- */
+.cg-stories {
+  background: var(--color-white);
+}
+
+/* Enlarge slider dot tap target to 44px while keeping the dot small */
+.slider-dot {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0;
+  background: transparent;
+}
+
+.slider-dot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #c7d4cd;
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: width 180ms var(--ease), background-color 180ms var(--ease);
+}
+
+.slider-dot.is-active {
+  width: 2.75rem;
+  border-radius: 0;
+  background: transparent;
+}
+
+.slider-dot.is-active::before {
+  width: 1.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal);
+}
+
+/* 7. Join our team + final CTA -------------------------------------------- */
+.cg-join {
+  background: var(--color-cream);
+}
+
+.cg-join__grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.cg-join__content h2 {
+  max-width: 14ch;
+  margin-top: 1rem;
+}
+
+.cg-join__benefits {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cg-join__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.cg-join__benefit-icon {
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: var(--color-teal-mist);
+  color: var(--color-teal);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.cg-join__benefit strong {
+  display: block;
+  color: var(--color-ink-deep);
+  font-size: 0.98rem;
+}
+
+.cg-join__benefit small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--color-slate);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.cg-join__actions {
+  margin-top: 2rem;
+}
+
+.cg-join__media {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.cg-join__media img {
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.cg-join__tag {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: grid;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, 0.95);
+  box-shadow: var(--shadow-card);
+}
+
+.cg-join__tag strong {
+  color: var(--color-teal-dark);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+.cg-join__tag span {
+  color: var(--color-slate);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cg-join .cta-band {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+/* Caregiver profile modal -------------------------------------------------- */
+body.cg-modal-open {
+  overflow: hidden;
+}
+
+.cg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.cg-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 48, 47, 0.6);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.cg-modal__panel {
+  position: relative;
+  display: grid;
+  width: min(100%, 42rem);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.cg-modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.95);
+  color: var(--color-ink);
+  font-size: 1.1rem;
+}
+
+.cg-modal__close:hover,
+.cg-modal__close:focus-visible {
+  background: var(--color-teal-mist);
+}
+
+.cg-modal__media {
+  background: var(--color-sage);
+}
+
+.cg-modal__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cg-modal__body {
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+.cg-modal__role {
+  color: var(--color-teal);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cg-modal__name {
+  margin-top: 0.3rem;
+  color: var(--color-ink-deep);
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+}
+
+.cg-modal__bio {
+  margin-top: 0.75rem;
+  color: var(--color-slate);
+  line-height: 1.7;
+}
+
+.cg-modal__facts {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.5rem 0 0;
+}
+
+.cg-modal__facts dt {
+  color: var(--color-slate);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cg-modal__facts dd {
+  margin: 0.15rem 0 0;
+  color: var(--color-ink-deep);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.cg-modal__action {
+  width: 100%;
+  margin-top: 1.75rem;
+}
+
+/* Responsive layout ------------------------------------------------------- */
+@media (min-width: 40rem) {
+  .cg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .cg-hero__inner {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  }
+
+  .cg-hero__cluster {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cg-hero__content {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cg-training__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .cg-day__row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .cg-day__row--reverse .cg-day__media {
+    order: 2;
+  }
+
+  .cg-day__row--reverse .cg-day__copy {
+    order: 1;
+  }
+
+  .cg-join__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .cg-modal__panel {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .cg-modal__media img {
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: 60rem) {
+  .cg-philosophy__grid {
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+@media (min-width: 62rem) {
+  .cg-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 27rem) {
+  .cg-hero__badge {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .cg-hero__badge-value {
+    font-size: 1.6rem;
+  }
+
+  .cg-hero__chip {
+    left: 4%;
+  }
+
+  .cg-filter {
+    font-size: 0.78rem;
+    padding-inline: 0.8rem;
+  }
+
+  .cg-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,160 @@
+@import url("style.css");
+
+/* ==========================================================================
+   404 page — page-specific layout only.
+   Colour, spacing, radius, shadow and typography tokens are inherited from
+   the shared homepage stylesheet (css/style.css) via the @import above.
+   ========================================================================== */
+
+.nf {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(4.5rem, 9vw, 7rem);
+  background: linear-gradient(180deg, var(--color-white), var(--color-cream));
+}
+
+.nf__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.nf__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) saturate(1.05);
+  transform: scale(1.06);
+}
+
+.nf__bg::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.88), rgba(255, 253, 249, 0.97));
+  content: "";
+}
+
+.nf__inner {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.nf__inner > * {
+  min-width: 0;
+}
+
+/* Error visual */
+.nf__visual {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.nf__code {
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 22vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-shadow: 0 20px 45px rgba(29, 113, 107, 0.16);
+}
+
+@media (min-width: 48rem) {
+  .nf__code {
+    font-size: clamp(6rem, 12vw, 10rem);
+  }
+}
+
+/* Copy */
+.nf__content {
+  max-width: 44rem;
+}
+
+.nf__eyebrow {
+  justify-content: center;
+}
+
+.nf__title {
+  max-width: 18ch;
+  margin-top: 1rem;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+}
+
+.nf__lead {
+  max-width: 38rem;
+  margin-top: 1.25rem;
+  color: var(--color-slate);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.nf__actions {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Quick links */
+.nf__links {
+  margin-top: 2.5rem;
+}
+
+.nf__links-label {
+  color: var(--color-slate);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nf__links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+
+.nf__links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-ink-deep);
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition: background-color 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
+}
+
+.nf__links a:hover,
+.nf__links a:focus-visible {
+  border-color: var(--color-teal);
+  background: var(--color-teal-mist);
+  color: var(--color-teal-dark);
+  transform: translateY(-2px);
+}
+
+/* Support line */
+.nf__support {
+  margin-top: 2rem;
+  color: var(--color-slate);
+  font-size: 0.95rem;
+}
+
+.nf__support a {
+  color: var(--color-teal);
+  font-weight: 800;
+}
+
+.nf__support a:hover,
+.nf__support a:focus-visible {
+  color: var(--color-teal-dark);
+  text-decoration: underline;
+}
